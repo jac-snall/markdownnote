@@ -1,6 +1,6 @@
 # markdownnote
 
-A new Flutter project.
+An app for taking notes and organizing projects. The notes can be in markdown. Each project should have an overview page with a todolist (the todolist could be on the right). Should be able to press anywhere inside to create a note. Each note should get a timestamp. Add search function for the notes.
 
 ## Getting Started
 
