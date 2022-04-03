@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:markdownnote/home/home.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -6,12 +7,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:
-          'Markdown note: an app for mangaing your notes and projects in markdown;',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        hoverColor: Colors.orange,
       ),
-      darkTheme: ThemeData.dark(),
+      home: const HomePage(),
     );
   }
 }
