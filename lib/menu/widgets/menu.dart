@@ -37,14 +37,31 @@ class Menu extends StatelessWidget {
           width: 2,
           thickness: 2,
         ),
-        Column(
-          children: const [
-            Text('Menu'),
-            Placeholder(
-              fallbackWidth: 200,
-            ),
-          ],
-        )
+        SizedBox(
+          width: 200,
+          child: IndexedStack(
+            index: selctedTab.index,
+            children: [
+              Column(
+                children: const [
+                  Text('Projects'),
+                  Placeholder(
+                    fallbackWidth: 200,
+                  ),
+                ],
+              ),
+              Column(
+                children: const [
+                  Text('Todos'),
+                  Placeholder(
+                    fallbackWidth: 200,
+                  ),
+                ],
+              ),
+              const SearchMenu(),
+            ],
+          ),
+        ),
       ],
     );
   }

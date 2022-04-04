@@ -4,7 +4,6 @@ enum MenuTab {
   projects,
   todos,
   search,
-  settings,
 }
 
 class MenuState extends Equatable {
