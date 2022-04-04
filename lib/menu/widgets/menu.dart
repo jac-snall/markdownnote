@@ -29,11 +29,7 @@ class Menu extends StatelessWidget {
               groupValue: selctedTab,
             ),
             const Spacer(),
-            MenuItem(
-              icon: Icons.settings_outlined,
-              value: MenuTab.settings,
-              groupValue: selctedTab,
-            ),
+            const _SettingsButton()
           ],
         ),
         const VerticalDivider(
@@ -50,6 +46,44 @@ class Menu extends StatelessWidget {
           ],
         )
       ],
+    );
+  }
+}
+
+class _SettingsButton extends StatefulWidget {
+  const _SettingsButton({Key? key}) : super(key: key);
+
+  @override
+  State<_SettingsButton> createState() => __SettingsButtonState();
+}
+
+class __SettingsButtonState extends State<_SettingsButton> {
+  bool hover = false;
+  @override
+  Widget build(BuildContext context) {
+    var hoverColor = Theme.of(context).hoverColor;
+    var iconColor = Theme.of(context).iconTheme.color;
+    return MouseRegion(
+      child: GestureDetector(
+        child: Padding(
+          padding: const EdgeInsets.all(7),
+          child: Icon(
+            Icons.settings_outlined,
+            color: hover ? hoverColor : iconColor,
+          ),
+        ),
+      ),
+      cursor: SystemMouseCursors.click,
+      onEnter: (event) {
+        setState(() {
+          hover = true;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          hover = false;
+        });
+      },
     );
   }
 }
