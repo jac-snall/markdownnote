@@ -37,8 +37,10 @@ dependencies:
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
-  isar: ^2.2.1
-  isar_flutter_libs: ^2.2.1
+  notes_api:
+    path: packages/notes_api
+  notes_repository:
+    path: packages/notes_repository
 
 dev_dependencies:
   flutter_test:
@@ -50,8 +52,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-  isar_generator: ^2.2.1
-  build_runner: ^2.1.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
