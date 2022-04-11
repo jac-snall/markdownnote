@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:markdownnote/menu/cubit/menu_cubit.dart';
-import 'package:markdownnote/menu/widgets/widgets.dart';
+import 'package:markdownnote/menu/menu.dart';
+import 'package:markdownnote/note_area/note_area.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
         children: const [
           Menu(),
           Expanded(
-            child: Placeholder(),
+            child: NoteArea(),
           ),
         ],
       ),

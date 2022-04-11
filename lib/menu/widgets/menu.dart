@@ -62,6 +62,11 @@ class Menu extends StatelessWidget {
             ],
           ),
         ),
+        const VerticalDivider(
+          color: Colors.black,
+          width: 2,
+          thickness: 2,
+        ),
       ],
     );
   }
