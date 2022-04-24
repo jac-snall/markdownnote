@@ -3,6 +3,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:markdownnote/app/app.dart';
+import 'package:notes_api/notes_api.dart';
+import 'package:notes_repository/notes_repository.dart';
 
 // Custom instance of [BlocObserver] which logs
 // any state changes and errors
@@ -22,16 +25,22 @@ class AppBlocObserver extends BlocObserver {
 
 /// Bootstrap is responsible for any common setup and calls
 /// [runApp] with the widget returned by [builder] in an error zone.
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+void bootstrap({required NotesApi notesApi}) {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
-  await BlocOverrides.runZoned(
-    () async => await runZonedGuarded(
-      () async => runApp(await builder()),
-      (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
-    ),
-    blocObserver: AppBlocObserver(),
+  final notesRepository = NotesRepository(notesApi: notesApi);
+
+  runZonedGuarded(
+    () async {
+      await BlocOverrides.runZoned(
+        () async => runApp(
+          const App(),
+        ),
+        blocObserver: AppBlocObserver(),
+      );
+    },
+    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

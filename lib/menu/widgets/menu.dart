@@ -11,6 +11,7 @@ class Menu extends StatelessWidget {
     final selctedTab = context.select((MenuCubit cubit) => cubit.state.tab);
     return Row(
       children: [
+        Container(),
         Column(
           children: [
             MenuItem(
