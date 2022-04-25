@@ -36,7 +36,7 @@ void bootstrap({required NotesApi notesApi}) {
     () async {
       await BlocOverrides.runZoned(
         () async => runApp(
-          const App(),
+          App(notesRepository: notesRepository),
         ),
         blocObserver: AppBlocObserver(),
       );

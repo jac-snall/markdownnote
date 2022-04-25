@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:markdownnote/menu/cubit/menu_cubit.dart';
 import 'package:markdownnote/menu/widgets/widgets.dart';
+import 'package:markdownnote/projects_menu/projects_menu.dart';
 
 class Menu extends StatelessWidget {
   const Menu({Key? key}) : super(key: key);
@@ -43,14 +44,7 @@ class Menu extends StatelessWidget {
           child: IndexedStack(
             index: selctedTab.index,
             children: [
-              Column(
-                children: const [
-                  Text('Projects'),
-                  Placeholder(
-                    fallbackWidth: 200,
-                  ),
-                ],
-              ),
+              const ProjectsMenu(),
               Column(
                 children: const [
                   Text('Todos'),

@@ -5,16 +5,16 @@ import 'models/models.dart';
 class NotesApi {
   //Factory function
   static Future<NotesApi> create() async {
-    var isar = await Isar.open(
+    final isar = await Isar.open(
       schemas: [ProjectSchema],
       directory: (await getApplicationDocumentsDirectory()).path,
     );
-    var notesApi = NotesApi._create(isar: isar);
+    final notesApi = NotesApi._create(isar: isar);
     return notesApi;
   }
 
   final Isar _isar;
-  NotesApi._create({required Isar isar}) : _isar = isar;
+  const NotesApi._create({required Isar isar}) : _isar = isar;
 
   Future<void> createProject(Project project) {
     return _isar.writeTxn((isar) async {
@@ -23,6 +23,6 @@ class NotesApi {
   }
 
   Stream<List<Project>> getProjects() {
-    return _isar.projects.where().limit(1).build().watch(initialReturn: true);
+    return _isar.projects.where().build().watch(initialReturn: true);
   }
 }
