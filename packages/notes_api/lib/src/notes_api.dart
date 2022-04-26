@@ -1,3 +1,4 @@
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:isar/isar.dart';
 import 'models/models.dart';
@@ -7,7 +8,7 @@ class NotesApi {
   static Future<NotesApi> create() async {
     final isar = await Isar.open(
       schemas: [ProjectSchema],
-      directory: (await getApplicationDocumentsDirectory()).path,
+      directory: join((await getApplicationDocumentsDirectory()).path, '.markdownnote'),
     );
     final notesApi = NotesApi._create(isar: isar);
     return notesApi;
