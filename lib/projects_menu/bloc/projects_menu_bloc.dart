@@ -12,6 +12,7 @@ class ProjectsMenuBloc extends Bloc<ProjectsMenuEvent, ProjectsMenuState> {
         super(const ProjectsMenuState()) {
     on<ProjectsMenuSubscriptionRequested>(_onSubscriptionRequested);
     on<ProjectsMenuProjectAdded>(_onProjectAdded);
+    on<ProjectsMenuProjectDeleted>(_onProjectDeleted);
   }
 
   Future<void> _onSubscriptionRequested(
@@ -38,6 +39,13 @@ class ProjectsMenuBloc extends Bloc<ProjectsMenuEvent, ProjectsMenuState> {
   ) async {
     final newProject = Project()..name = event.projectName;
     await _notesRepository.createProject(newProject);
+  }
+
+  Future<void> _onProjectDeleted(
+    ProjectsMenuProjectDeleted event,
+    Emitter<ProjectsMenuState> emit,
+  ) async {
+    await _notesRepository.deleteProject(event.project);
   }
 
   final NotesRepository _notesRepository;

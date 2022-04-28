@@ -41,6 +41,7 @@ dependencies:
     path: packages/notes_api
   notes_repository:
     path: packages/notes_repository
+  contextmenu: ^3.0.0
 
 dev_dependencies:
   flutter_test:

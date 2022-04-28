@@ -19,3 +19,11 @@ class ProjectsMenuProjectAdded extends ProjectsMenuEvent {
   @override
   List<Object> get props => [projectName];
 }
+
+class ProjectsMenuProjectDeleted extends ProjectsMenuEvent {
+  const ProjectsMenuProjectDeleted({required this.project});
+  final Project project;
+
+  @override
+  List<Object> get props => [project];
+}

@@ -8,4 +8,6 @@ class NotesRepository {
   Stream<List<Project>> getProjects() => _notesApi.getProjects();
 
   Future<void> createProject(Project project) => _notesApi.createProject(project);
+
+  Future<void> deleteProject(Project project) => _notesApi.deleteProject(project);
 }

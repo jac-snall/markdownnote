@@ -23,6 +23,14 @@ class NotesApi {
     });
   }
 
+  Future<void> deleteProject(Project project) {
+    return _isar.writeTxn((isar) async {
+      if (project.id != null) {
+        _isar.projects.delete(project.id as int);
+      }
+    });
+  }
+
   Stream<List<Project>> getProjects() {
     return _isar.projects.where().build().watch(initialReturn: true);
   }

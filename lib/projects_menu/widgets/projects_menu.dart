@@ -22,32 +22,39 @@ class ProjectsMenuView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<ProjectsMenuBloc, ProjectsMenuState>(builder: (context, state) {
-          if (state.projects.isEmpty) {
-            if (state.status == ProjectsMenuStatus.loading) {
-              return const Center(child: Text('Loading'));
-            } else if (state.status != ProjectsMenuStatus.success) {
-              return const SizedBox();
-            } else {
-              return const Center(child: Text('No projects'));
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          BlocBuilder<ProjectsMenuBloc, ProjectsMenuState>(builder: (context, state) {
+            if (state.projects.isEmpty) {
+              if (state.status == ProjectsMenuStatus.loading) {
+                return const Center(child: Text('Loading'));
+              } else if (state.status != ProjectsMenuStatus.success) {
+                return const SizedBox();
+              } else {
+                return const Center(child: Text('No projects'));
+              }
             }
-          }
 
-          return Column(
-            children: [
-              for (final project in state.projects) Text(project.name),
-            ],
-          );
-        }),
-        TextButton(
-          child: const Text('hello'),
-          onPressed: () {
-            context.read<ProjectsMenuBloc>().add(ProjectsMenuProjectAdded(projectName: 'Test1'));
-          },
-        )
-      ],
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                for (final project in state.projects) ProjectsMenuItem(project: project),
+              ],
+            );
+          }),
+          Center(
+            child: TextButton(
+              child: const Text('hello'),
+              onPressed: () {
+                context.read<ProjectsMenuBloc>().add(const ProjectsMenuProjectAdded(projectName: 'Test1'));
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 }
